@@ -1,0 +1,66 @@
+Problem Statement:
+
+The major challenge in this project is to rename all the files in a directory. But users may
+only need to name a certain number of files. You can implement a feature to allow users to
+choose the number of files to be renamed, instead of all the files.
+Also, instead of a script, you can build a file manager like UI to select the files.
+Note that renaming only a certain number of files will require the tool to sort the files
+based on alphabetical order, time of file creation, or file size, depending on the user’s
+requirements.
+
+
+Solution:
+
+How to Run:
+
+To run this project, the user must have python 3.x installed in his/her system. Apart from 
+that, the user also must have to assign python-path to the environmental variable.
+Now open terminal or cmd (for windows user) and install "Flask" library by using 'pip install 
+flask'. Now, go to the directory where the python files are placed.
+Run the python file by using "python Bulk_rename.py", open your browser and search for URL 
+'http://localhost:5000'.
+
+
+About Flask:
+
+Flask is a lightweight WSGI web application framework. It is designed to make getting started 
+quick and easy, with the ability to scale up to complex applications. It began as a simple 
+wrapper around Werkzeug and Jinja and has become one of the most popular Python web application 
+frameworks. Flask offers suggestions but doesn't enforce any dependencies or project layout. 
+It is up to the developer to choose the tools and libraries they want to use. There are many 
+extensions provided by the community that makes adding new functionality easy.
+
+
+
+Features From Project 1:
+
+01. Users can choose the directory where the files to be renamed are. 
+02. Program doesn't end after executing the task. It again asks about the new path. It prevents 
+	the user to run the tool again and again.
+03. Lower digits number are prefixed with zeros so that it doesn't create a mess on sorting. 
+	For eg., if there are a total of 500 files in a folder and user want to rename them, 
+	then the counting starts from 001 and ends on 500. If there are 5000 files then it goes 
+	from 0001 to 5000 etc.
+04. Users are able to give there convenient naming convention, but also this tool prevents to 
+	give special characters like ? / \ . Only available special characters are - _ ( ) { } [ ]
+05. This tool first checks that if a given path exists or not. Also, it must have a path to 
+	a directory (not to a particular file).
+06. This tool also checks whether the directory is empty or not as well as user accessibility.
+07. Follow Windows operating system standards to rename the files if one or more filenames 
+	already exist.
+08. Ask user confirmation before renaming the files.
+09. This tool supports very good use of exception handling.
+10. Faster and easy to use.
+
+
+Extra Features:
+
+01. Web-based user-friendly UI file manager.
+02. User can now select one or more files to rename according to their need.
+03. Files can be sorted based on alphabetical order, last modified date-time, or file size 
+	depending on the user’s	requirements.
+04. User can now search a particular file/folder by their name, last modified date, or size 
+	from the current list.
+05. User can now travel to the path from one folder to another.
+06. Direct access to every drive available on the system.
+07. User-friendly flash messages of errors and success.

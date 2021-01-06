@@ -1,0 +1,97 @@
+{% extends "header_sidebar_menu.html" %}
+{% block content %}
+<style>
+    table #td {
+max-width: 300px;
+text-overflow: ellipsis;
+overflow: hidden;
+}
+</style>
+<div class="col-sm-12">
+<div class="card">
+<div class="card-body">
+    <h5>Current PATH: {{ list[0][0] }}</h5>
+<form class="form-horizontal" role="form" method="post" action="/rename" id="rename_form">
+    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <input type="hidden" name="naming_convention" id="naming_convention" value="">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Modified Date</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th><INPUT type="checkbox" name="chk" id="chkParent" checked /> Select Files</th>
+            </tr>
+        </thead>
+        <tbody id="tblData">
+            {% for li in list %}
+                <tr>
+                    <td id='td'>{% if li[3]=='Directory' %}<a href="{{url_for('path', add=li[0]+'\\'+li[1])}}"><i class="fas fa-folder"></i> {{li[1]}}</a>{% else %} <i class="fas fa-file"></i> {{li[1]}} {% endif %}</td>
+                    <td>{{li[2]}}</td>
+                    <td>{{li[3]}}</td>
+                    <td>{{li[4]}}</td>
+                    <td><input type='checkbox' name="rename[]" value="{{li[0]+'\\'+li[1]}}" checked></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="5"></th>
+            </tr>
+        </tfoot>
+    </table>
+    
+</form>
+<button id="btn-submit" onclick="naming_convention()" style="float:right;">Rename</button>
+</div>
+</div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#chkParent').click(function() {
+        var isChecked = $(this).prop("checked");
+        $('#tblData tr:has(td)').find('input[type="checkbox"]').prop('checked', isChecked);
+    });
+
+    $('#tblData tr:has(td)').find('input[type="checkbox"]').click(function() {
+        var isChecked = $(this).prop("checked");
+        var isHeaderChecked = $("#chkParent").prop("checked");
+        if (isChecked == false && isHeaderChecked)
+            $("#chkParent").prop('checked', isChecked);
+        else {
+            $('#tblData tr:has(td)').find('input[type="checkbox"]').each(function() {
+                if ($(this).prop("checked") == false)
+                    isChecked = false;
+            });
+            $("#chkParent").prop('checked', isChecked);
+        }
+    });
+    
+    $('#datatable-buttons').DataTable( {
+        destroy: true,
+        aaSorting: [[2, "asc"]],
+        bPaginate: false,
+        bSortable: true,
+        aoColumnDefs: [
+            { "aTargets": [ 0 ], "bSortable": true },
+            { "aTargets": [ 1 ], "bSortable": true },
+            { "aTargets": [ 2 ], "bSortable": true },
+            { "aTargets": [ 3 ], "bSortable": true },
+            { "aTargets": [ 4 ], "bSortable": false }
+        ]
+        } );
+});
+</script>
+<script type="text/javascript">
+    function naming_convention(){
+        var name = prompt("Enter the naming convention: ");
+        var desired = name.replace(/[^A-Za-z0-9 _\(\)\{\}\[\]\-]+/gi, '');
+        document.getElementById("naming_convention").value = desired;
+        if(desired!="" && desired!= null){
+            if(confirm("Your naming convention is: "+document.getElementById("naming_convention").value+"\n\nDo you want to confirm?")){
+                document.getElementById("rename_form").submit();
+            }
+        }
+    }
+</script>
+{% endblock %}

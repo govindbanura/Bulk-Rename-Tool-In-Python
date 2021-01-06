@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bulk Rename Tool</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel= "shortcut icon" href= "{{ url_for('static',filename='favicon.ico') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='bootstrap.min.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='icons.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='jquery.dataTables.min.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='buttons.bootstrap4.min.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='fixedHeader.bootstrap.min.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='responsive.bootstrap.min.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='dataTables.bootstrap4.min.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='scroller.bootstrap.min.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='datatables.min.css') }}">
+    <script src="{{url_for('static', filename='jquery-2.1.4.min.js')}}"></script>
+    
+
+</head>
+
+<body class="fixed-left">
+    <!-- Begin page -->
+    <div id="wrapper">
+        <!-- Top Bar Start -->
+        <div class="topbar">
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <div class="text-center"><a href="#" class="logo"><span>Bulk</span>Rename</a></div>
+            </div>
+            <!-- Button mobile view to collapse sidebar menu -->
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left waves-light waves-effect" style="margin-top: 20px;"><i class="mdi mdi-menu"></i></button>
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
+            </nav>
+        </div>
+        <!-- Top Bar End -->
+<!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="sidebar-inner slimscrollleft">
+                <!--- Divider -->
+                <div id="sidebar-menu">
+                    <ul>
+                        <li><a href="{{url_for('index')}}"><i class="mdi mdi-home"></i><span style="font-size: small;">Dashboard</span></a></li>
+                      {% for drive in drives %}
+                        <li><a href="{{ url_for('path', add=drive[1]) }}"><i>{{ drive[0] }}</i><span style='font-size: small;'>{{drive[1]}}</span></a></li>
+                      {% endfor %}
+                        
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- end sidebarinner -->
+        </div>
+        <!-- Left Sidebar End -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="">
+                    <div class="page-header-title">
+                        <h4 class="page-title"></h4></div>
+                </div>
+                <div class="page-content-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                        <!-- end row -->
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                              <ul class=flashes>
+                              {% for category,message in messages %}
+                                <li><div class='alert alert-{{category}}' role='alert'>{{ message }}</div></li>
+                              {% endfor %}
+                              </ul>
+                            {% endif %}
+                        {% endwith %}
+                        {% block content %}{% endblock %}
+                        </div>
+                    </div>
+                    <!-- container -->
+                </div>
+                <!-- Page content Wrapper -->
+            </div>
+        </div>
+	</div>
+    <script src="{{url_for('static', filename='popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='modernizr.min.js')}}"></script>
+    <script src="{{url_for('static', filename='detect.js')}}"></script>
+    <script src="{{url_for('static', filename='fastclick.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery.slimscroll.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery.blockUI.js')}}"></script>
+    <script src="{{url_for('static', filename='waves.js')}}"></script>
+    <script src="{{url_for('static', filename='wow.min.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery.nicescroll.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery.scrollTo.min.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery.dataTables.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dataTables.buttons.min.js')}}"></script>
+    <script src="{{url_for('static', filename='buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='pdfmake.min.js')}}"></script>
+    <script src="{{url_for('static', filename='vfs_fonts.js')}}"></script>
+    <script src="{{url_for('static', filename='buttons.html5.min.js')}}"></script>
+    <script src="{{url_for('static', filename='buttons.print.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dataTables.fixedHeader.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dataTables.keyTable.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dataTables.scroller.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dataTables.responsive.min.js')}}"></script>
+    <script src="{{url_for('static', filename='responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+    <script src="{{url_for('static', filename='datatables.init.js')}}"></script>
+    <script src="{{url_for('static', filename='bootstrap-filestyle.min.js')}}"></script>
+    <script src="{{url_for('static', filename='dropzone.js')}}"></script>
+</body>
+</html>

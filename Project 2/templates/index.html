@@ -1,0 +1,59 @@
+{% extends "header_sidebar_menu.html" %}
+{% block content %}
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="m-t-0 m-b-30">Form elements</h4>
+                <form class="form-horizontal" role="form" action="{{ url_for('input_path') }}" method='post'>
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label" for="example-text-input">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Enter Path" id="example-text-input" name='add' required>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-l-10" name='submit'>Submit</button>
+                        </div>
+                    </div>
+                   
+                </form>
+            </div>
+            <!-- card-body -->
+        </div>
+        <!-- card -->
+    </div>
+    <!-- col -->
+
+</div>
+</div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#chkParent').click(function() {
+        var isChecked = $(this).prop("checked");
+        $('#tblData tr:has(td)').find('input[type="checkbox"]').prop('checked', isChecked);
+    });
+
+    $('#tblData tr:has(td)').find('input[type="checkbox"]').click(function() {
+        var isChecked = $(this).prop("checked");
+        var isHeaderChecked = $("#chkParent").prop("checked");
+        if (isChecked == false && isHeaderChecked)
+            $("#chkParent").prop('checked', isChecked);
+        else {
+            $('#tblData tr:has(td)').find('input[type="checkbox"]').each(function() {
+                if ($(this).prop("checked") == false)
+                    isChecked = false;
+            });
+            $("#chkParent").prop('checked', isChecked);
+        }
+    });
+    
+    $('#datatable-buttons').DataTable( {
+            destroy: true,
+            "paging":   false,
+            "ordering": false
+        } );
+});
+</script>
+{% endblock %}

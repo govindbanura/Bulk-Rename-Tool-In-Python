@@ -1,0 +1,59 @@
+Problem Statement:
+
+The main objective of this project idea is to rename files. So, the application needs to find a
+way to manipulate the target files. The os, sys, and shutil libraries will be useful for a large part
+of this project.
+Your users will be able to rename all the files in the directory, using naming conventions. Therefore,
+they should be able to pass in the naming convention of choice. The regex module will help match the 
+required naming patterns if you understand how regex works.
+A user may want to pass in a naming convention such as “myfiles” as part of the commands and
+expect that the tool renames all the files like myfilesXYZ, where XYZ is a number. They should
+also be able to choose the directory where the files to be renamed are.
+
+
+
+How to Run:
+
+To run this project, the user must have python 3.x installed in his/her system. Apart from that, the user also
+must have to assign python-path to the environmental variable. Now open terminal or cmd (for windows user)
+and go to the directory where the python files are placed.
+Run the python file by using "python Bulk_rename_vX.0.py", where X is the version of the script. Now the Bulk file
+rename tool is ready to use. This tool doesn't use any external libraries, so no need to install any libraries.
+
+
+
+Bulk_rename_v1.0.py Vs. Bulk_rename_v2.0.py:
+
+There are two python scripts in this project. User may choose any one of them according to their need as 
+the difference is small. 
+Bulk_rename_v1.0.py uses the concept, which is used by the windows operation system
+when the filename already exists in the same directory. For eg., if a user wants to change the filename from
+ABC001.txt to XYZ001.txt and if there is already a file with the name XYZ001.txt in the same directory, windows
+operating system will assign the new file with the name XYZ001 (2).txt. If that also exists then it will
+be assigned the new file with the name XYZ001 (3).txt.
+
+In Bulk_rename_v2.0.py, at first, all the files are renamed with the same method as Bulk_rename_v1.0.py, after
+that the files are renamed again with the naming convention given by the user so the numbering starts with 1 and
+ends on the number which is same as total files available in the particular folder. This tool is a little slower
+than v1.0, but also give perfect results what the user wants.
+
+
+
+Features:
+
+01. Users can choose the directory where the files to be renamed are. 
+02. Program doesn't end after executing the task. It again asks about the new path. It prevents the user to run the
+	tool again and again.
+03. Lower digits number are prefixed with zeros so that it doesn't create a mess on sorting. For eg., if there are
+	a total of 500 files in a folder and user want to rename them, then the counting starts from 001 and ends on
+	500. If there are 5000 files then it goes from 0001 to 5000 etc.
+04. Users are able to give there convenient naming convention, but also this tool prevents to give special 
+	characters like	? / \ . Only available special characters are - _ ( ) { } [ ]
+05. This tool first checks that if a given path exists or not. Also, it must have a path to a directory (not to
+	a particular file).
+06. This tool also checks whether the directory is empty or not as well as accessible by the user or not.
+07. Follow Windows operating system standards to rename the files if one or more filenames already exist.
+08. Ask user confirmation before renaming the files.
+09. This tool supports very good use of exception handling.
+10. Faster and easy to use.
+ 
