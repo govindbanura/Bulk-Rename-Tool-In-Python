@@ -1,4 +1,4 @@
-Bulk File Rename Tool
+Bulk File Rename Tool: 
 Sometimes, you need to name all the files in a directory according to certain conventions. For
 example, you can rename all the files in a directory with File0001.jpg, where the numbers
 increase based on the number of files in the directory. Doing this manually can be stressful
@@ -10,9 +10,10 @@ work and make mistakes. With the Bulk File Rename Tool, users can rename files i
 of seconds without any mistakes.
 Examples of Bulk File Rename Tools
 Here are some implementations of the Bulk File Rename idea:
-• Ren
+• Ren,
 • Rename
-Technical Details
+
+Technical Details: 
 The main objective of this project idea is to rename files. So, the application needs to find a
 way to manipulate the target files. The os, sys, and shutil libraries will be useful for a large part
 of this project.
@@ -23,7 +24,7 @@ A user may want to pass in a naming convention such as myfiles as part of the co
 expect that the tool renames all the files like myfilesXYZ, where XYZ is a number. They should
 also be able to choose the directory where the files to be renamed are.
 
-Extra Challenge(Optional)
+Extra Challenge(Optional): 
 The major challenge in this project is to rename all the files in a directory. But users may
 only need to name a certain number of files. You can implement a feature to allow users to
 choose the number of files to be renamed, instead of all the files.
